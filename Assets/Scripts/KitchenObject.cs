@@ -29,8 +29,8 @@ public class KitchenObject : NetworkBehaviour {
 
         kitchenObjectParent.SetKitchenObject(this);
 
-        transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
-        transform.localPosition = Vector3.zero;
+        // transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
+        // transform.localPosition = Vector3.zero;
     }
 
     public IKitchenObjectParent GetKitchenObjectParent() {
@@ -54,15 +54,9 @@ public class KitchenObject : NetworkBehaviour {
     }
 
 
-
-    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent) {
-        Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
-
-        KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
-        
-        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
-
-        return kitchenObject;
+    public static void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
+    {
+        KitchenGameMultiplayer.Instance.SpawnKitchenObject(kitchenObjectSO, kitchenObjectParent);
     }
 
 }
