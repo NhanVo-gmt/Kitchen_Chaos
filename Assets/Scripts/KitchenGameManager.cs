@@ -13,6 +13,7 @@ public class KitchenGameManager : MonoBehaviour {
     public event EventHandler OnStateChanged;
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnpaused;
+    public event EventHandler OnLocalPlayerReadyChanged;
 
 
     private enum State {
@@ -24,10 +25,11 @@ public class KitchenGameManager : MonoBehaviour {
 
 
     private State state;
-    private float countdownToStartTimer = 1f;
+    private bool  isLocalPlayerReady    = false;
+    private float countdownToStartTimer = 3f;
     private float gamePlayingTimer;
     private float gamePlayingTimerMax = 300f;
-    private bool isGamePaused = false;
+    private bool  isGamePaused        = false;
 
 
     private void Awake() {
@@ -39,16 +41,13 @@ public class KitchenGameManager : MonoBehaviour {
     private void Start() {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
-        
-        // DEBUG TRIGGER START AUTOMATICALLY
-        state = State.CountdownToStart;
-        OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
-        if (state == State.WaitingToStart) {
-            state = State.CountdownToStart;
-            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        if (state == State.WaitingToStart)
+        {
+            isLocalPlayerReady = true;
+            OnLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -94,6 +93,11 @@ public class KitchenGameManager : MonoBehaviour {
 
     public bool IsGameOver() {
         return state == State.GameOver;
+    }
+
+    public bool IsLocalPlayerReady()
+    {
+        return isLocalPlayerReady;
     }
 
     public float GetGamePlayingTimerNormalized() {
