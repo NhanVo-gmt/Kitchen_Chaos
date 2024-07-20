@@ -53,12 +53,16 @@ public class KitchenGameManager : NetworkBehaviour {
     {
         state.OnValueChanged += State_OnValueChanged;
         isGamePaused.OnValueChanged += IsGamePause_OnValueChanged;
-
+        
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
         }
     }
+    
+
+    
+    
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
         autoTestGamePauseState = true;
