@@ -20,6 +20,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
         NetworkManager.Singleton.StartHost();
     }
+    
     private void NetworkManager_ConnectionApprovalCallback(
         NetworkManager.ConnectionApprovalRequest  connectionApprovalRequest,
         NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
