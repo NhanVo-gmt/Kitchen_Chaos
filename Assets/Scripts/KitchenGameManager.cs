@@ -175,6 +175,10 @@ public class KitchenGameManager : NetworkBehaviour {
     public float GetCountdownToStartTimer() {
         return countdownToStartTimer.Value;
     }
+    
+    public bool IsWaitingToStart() {
+        return state.Value == State.WaitingToStart;
+    }
 
     public bool IsGameOver() {
         return state.Value == State.GameOver;
