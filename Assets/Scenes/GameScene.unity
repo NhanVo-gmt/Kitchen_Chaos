@@ -10707,6 +10707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d323c0a955172814cafff18d9c322530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playAgainBtn: {fileID: 2129806988}
 --- !u!1 &1433025153
 GameObject:
   m_ObjectHideFlags: 0
@@ -15263,7 +15264,7 @@ PrefabInstance:
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}

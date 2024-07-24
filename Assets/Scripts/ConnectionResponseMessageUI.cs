@@ -25,6 +25,11 @@ public class ConnectionResponseMessageUI : MonoBehaviour
     private void KitchenGameMultiplayer_OnFailedToJoinGame(object sender, EventArgs e)
     {
         messageText.text = NetworkManager.Singleton.DisconnectReason;
+        if (messageText.text == "")
+        {
+            messageText.text = "Failed to connect";
+        }
+        
         Show();
     }
 
