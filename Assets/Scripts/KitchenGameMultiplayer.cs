@@ -16,6 +16,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public event EventHandler OnPlayerDataNetworkListChanged;
 
     [SerializeField] private KitchenObjectListSO kitchenObjectListSo;
+    [SerializeField] private List<Color>         playerColorList;
 
     private NetworkList<PlayerData> playerDataNetworkList;
 
@@ -40,14 +41,6 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         NetworkManager.Singleton.OnClientConnectedCallback  += NetworkManager_OnClientConnectedCallback;
         NetworkManager.Singleton.StartHost();
     }
-    
-    private void NetworkManager_OnClientConnectedCallback(ulong clientId)
-    {
-        playerDataNetworkList.Add(new PlayerData()
-        {
-            clientId = clientId
-        });
-    }
 
     private void NetworkManager_ConnectionApprovalCallback(
         NetworkManager.ConnectionApprovalRequest  connectionApprovalRequest,
@@ -68,6 +61,14 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         }
         
         connectionApprovalResponse.Approved = true;
+    }
+    
+    private void NetworkManager_OnClientConnectedCallback(ulong clientId)
+    {
+        playerDataNetworkList.Add(new PlayerData()
+        {
+            clientId = clientId
+        });
     }
     
 
@@ -142,5 +143,10 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public bool IsPlayerIndexConnected(int playerIndex)
     {
         return playerIndex < playerDataNetworkList.Count;
+    }
+
+    public PlayerData GetPlayerDataFromPlayerIndex(int playerIndex)
+    {
+        return playerDataNetworkList[playerIndex];
     }
 }
