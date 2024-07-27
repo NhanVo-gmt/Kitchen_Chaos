@@ -149,4 +149,9 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     {
         return playerDataNetworkList[playerIndex];
     }
+
+    public Color GetPlayerColor(int colorId)
+    {
+        return playerColorList[colorId];
+    }
 }

@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class CharacterSelectPlayer : MonoBehaviour
 {
-    [SerializeField] private int        playerIndex;
-    [SerializeField] private GameObject readyGameObject;
+    [SerializeField] private int          playerIndex;
+    [SerializeField] private GameObject   readyGameObject;
+    [SerializeField] private PlayerVisual playerVisual;
     
     private void Start()
     {
@@ -34,6 +35,8 @@ public class CharacterSelectPlayer : MonoBehaviour
 
             PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(playerIndex);
             readyGameObject.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.clientId));
+            
+            playerVisual.SetPlayerColor(KitchenGameMultiplayer.Instance.GetPlayerColor(playerIndex));
         }
         else
         {
