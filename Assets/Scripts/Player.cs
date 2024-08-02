@@ -22,11 +22,12 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     }
 
 
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private GameInput gameInput;
-    [SerializeField] private LayerMask countersLayerMask;
-    [SerializeField] private LayerMask collisionsLayerMask;
-    [SerializeField] private Transform kitchenObjectHoldPoint;
+    [SerializeField] private float        moveSpeed = 7f;
+    [SerializeField] private GameInput    gameInput;
+    [SerializeField] private LayerMask    countersLayerMask;
+    [SerializeField] private LayerMask    collisionsLayerMask;
+    [SerializeField] private Transform    kitchenObjectHoldPoint;
+    [SerializeField] private PlayerVisual playerVisual;
 
 
     private bool isWalking;
@@ -37,6 +38,9 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     private void Start() {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.Instance.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+
+        PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromClientId(OwnerClientId);
+        playerVisual.SetPlayerColor(KitchenGameMultiplayer.Instance.GetPlayerColor(playerData.colorId));
     }
 
     public override void OnNetworkSpawn()

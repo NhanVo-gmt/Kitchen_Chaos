@@ -107,6 +107,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   kitchenObjectHoldPoint: {fileID: 913451205690984907}
+  playerVisual: {fileID: 7184977787759949083}
 --- !u!114 &8149394014424003583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +247,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5284108057078464442}
+    - targetCorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7184977787759949083}
   m_SourcePrefab: {fileID: 100100000, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
 --- !u!95 &10520096945713472 stripped
 Animator:
@@ -292,6 +297,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 10520096945713472}
+--- !u!114 &7184977787759949083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079455262105170995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05196b5196b24c74a802af0f1ec15ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headMeshRenderer: {fileID: 9079455262613817282}
+  bodyMeshRenderer: {fileID: 9079455262192353947}
+--- !u!23 &9079455262192353947 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3294758251441920655, guid: 1c5dda3c7cd3cf742afcade5419faeab,
+    type: 3}
+  m_PrefabInstance: {fileID: 6033100947754670100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9079455262613817282 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3294758250785316822, guid: 1c5dda3c7cd3cf742afcade5419faeab,
+    type: 3}
+  m_PrefabInstance: {fileID: 6033100947754670100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6188538576387138050
 PrefabInstance:
   m_ObjectHideFlags: 0
