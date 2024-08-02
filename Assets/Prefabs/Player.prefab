@@ -107,6 +107,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   kitchenObjectHoldPoint: {fileID: 913451205690984907}
+  spawnPositionList:
+  - {x: -2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: -2, y: 0, z: -2}
+  - {x: 2, y: 0, z: -2}
   playerVisual: {fileID: 7184977787759949083}
 --- !u!114 &8149394014424003583
 MonoBehaviour:

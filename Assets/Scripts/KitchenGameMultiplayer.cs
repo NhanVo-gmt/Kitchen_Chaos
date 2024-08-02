@@ -39,11 +39,11 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
         NetworkManager.Singleton.OnClientConnectedCallback  += NetworkManager_OnClientConnectedCallback;
-        NetworkManager.Singleton.OnClientDisconnectCallback  += NetworkManager_Server_OnClientConnectedCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback  += NetworkManager_Server_OnClientDisconnectedCallback;
         NetworkManager.Singleton.StartHost();
     }
     
-    private void NetworkManager_Server_OnClientConnectedCallback(ulong clientId)
+    private void NetworkManager_Server_OnClientDisconnectedCallback(ulong clientId)
     {
         for (int i = 0; i < playerDataNetworkList.Count; i++)
         {
@@ -247,5 +247,11 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         }
 
         return -1;
+    }
+
+    public void KickPlayer(ulong clientId)
+    {
+        NetworkManager.Singleton.DisconnectClient(clientId);
+        NetworkManager_Server_OnClientDisconnectedCallback(clientId);
     }
 }
